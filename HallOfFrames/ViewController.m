@@ -100,9 +100,6 @@
         currentPicture.red = 0;
         currentPicture.green = 0;
         currentPicture.blue = 255;
-    } else {
-        // Picture *currentPicture = [self.pictures objectAtIndex:self.cellRow.row];
-        // currentPicture.frameColor = [UIColor yellowColor];
     }
     
     [self.collectionView reloadData];
