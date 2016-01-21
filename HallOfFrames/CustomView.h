@@ -16,11 +16,16 @@
 
 - (void) customView:(id)view didTapButton:(UIButton *)button;
 
+- (void) testSlider:(id)view didSlide:(UISlider *)slider;
+
+- (void) sliderChange:(id)view didSlide:(UISlider *)slider;
+
 @end
 
 @interface CustomView : UIView
 
 @property (nonatomic, assign)id <CustomViewDelegate> delegate;
+
 @property (weak, nonatomic) IBOutlet UISlider *redSlider;
 @property (weak, nonatomic) IBOutlet UISlider *greenSlider;
 @property (weak, nonatomic) IBOutlet UISlider *blueSlider;

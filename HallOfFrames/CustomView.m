@@ -14,4 +14,12 @@
     [self.delegate customView:self didTapButton:sender];
 }
 
+- (IBAction)testSlider:(UISlider *)sender {
+    [self.delegate testSlider:self didSlide:sender];
+}
+
+- (IBAction)onSliderSlid:(UISlider *)sender {
+    [self.delegate sliderChange:self didSlide:sender];
+}
+
 @end

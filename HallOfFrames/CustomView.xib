@@ -62,15 +62,31 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="114" id="ude-WO-L2x"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="onSliderSlid:" destination="iN0-l3-epB" eventType="valueChanged" id="Zgf-9r-thT"/>
+                                </connections>
                             </slider>
                             <slider opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="4SE-tu-dDv">
                                 <rect key="frame" x="241" y="386" width="118" height="31"/>
+                                <connections>
+                                    <action selector="onSliderSlid:" destination="iN0-l3-epB" eventType="valueChanged" id="iqG-zt-On7"/>
+                                </connections>
                             </slider>
                             <slider opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="6lu-LC-RDD">
                                 <rect key="frame" x="241" y="427" width="118" height="31"/>
+                                <connections>
+                                    <action selector="onSliderSlid:" destination="iN0-l3-epB" eventType="valueChanged" id="PED-gt-KAf"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="B6i-EU-9DN">
+                                <rect key="frame" x="241" y="534" width="118" height="31"/>
+                                <connections>
+                                    <action selector="testSlider:" destination="iN0-l3-epB" eventType="valueChanged" id="Ri9-24-SPh"/>
+                                </connections>
                             </slider>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="B6i-EU-9DN" firstAttribute="leading" secondItem="6lu-LC-RDD" secondAttribute="leading" id="5hY-Bc-7FH"/>
                             <constraint firstItem="4SE-tu-dDv" firstAttribute="centerX" secondItem="AVc-8P-Ic3" secondAttribute="centerX" id="86t-hl-rMR"/>
                             <constraint firstItem="9W0-wZ-lxt" firstAttribute="leading" secondItem="GCE-uD-Z1h" secondAttribute="leading" constant="6" id="BfI-5O-568"/>
                             <constraint firstItem="4SE-tu-dDv" firstAttribute="top" secondItem="8NH-mD-xfX" secondAttribute="bottom" constant="14" id="Dab-Zy-Ia5"/>
@@ -78,9 +94,11 @@
                             <constraint firstItem="8NH-mD-xfX" firstAttribute="leading" secondItem="4SE-tu-dDv" secondAttribute="leading" id="H3q-y5-ftk"/>
                             <constraint firstItem="9W0-wZ-lxt" firstAttribute="leading" secondItem="49h-eu-Wo9" secondAttribute="leading" constant="12" id="KAr-BQ-PoQ"/>
                             <constraint firstItem="9W0-wZ-lxt" firstAttribute="centerX" secondItem="AVc-8P-Ic3" secondAttribute="centerX" id="Veo-Y2-Jek"/>
+                            <constraint firstItem="B6i-EU-9DN" firstAttribute="trailing" secondItem="6lu-LC-RDD" secondAttribute="trailing" id="XXQ-kr-6d0"/>
                             <constraint firstItem="8NH-mD-xfX" firstAttribute="top" secondItem="9W0-wZ-lxt" secondAttribute="bottom" constant="8" symbolic="YES" id="ZDS-dX-3Q1"/>
                             <constraint firstItem="B03-Mm-mGa" firstAttribute="leading" secondItem="GCE-uD-Z1h" secondAttribute="leading" constant="6" id="ZZC-Fg-uZB"/>
                             <constraint firstItem="GCE-uD-Z1h" firstAttribute="top" secondItem="B03-Mm-mGa" secondAttribute="bottom" constant="8" symbolic="YES" id="aSY-UJ-hwb"/>
+                            <constraint firstItem="B6i-EU-9DN" firstAttribute="top" secondItem="49h-eu-Wo9" secondAttribute="bottom" constant="24" id="fdr-2J-kTh"/>
                             <constraint firstItem="9W0-wZ-lxt" firstAttribute="centerX" secondItem="8NH-mD-xfX" secondAttribute="centerX" id="iyP-cl-BiA"/>
                             <constraint firstItem="6lu-LC-RDD" firstAttribute="top" secondItem="4SE-tu-dDv" secondAttribute="bottom" constant="11" id="kQL-um-R3P"/>
                             <constraint firstItem="B03-Mm-mGa" firstAttribute="centerX" secondItem="AVc-8P-Ic3" secondAttribute="centerX" id="kog-xP-25z"/>

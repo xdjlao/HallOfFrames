@@ -73,11 +73,7 @@
     hiddenView.blueSlider.minimumValue = 0;
     hiddenView.blueSlider.maximumValue = 255;
     hiddenView.blueSlider.value = currentPicture.blue;
-    
-    [hiddenView.redSlider addTarget:self action:@selector(valueChange:) forControlEvents:UIControlEventValueChanged];
-    [hiddenView.greenSlider addTarget:self action:@selector(valueChange:) forControlEvents:UIControlEventValueChanged];
-    [hiddenView.blueSlider addTarget:self action:@selector(valueChange:) forControlEvents:UIControlEventValueChanged];
-    
+
     [self.view addSubview:hiddenView];
 }
 
@@ -105,21 +101,22 @@
     [self.collectionView reloadData];
 }
 
-#pragma mark - methods
+- (void)testSlider:(id)view didSlide:(UISlider *)slider {
+    self.title = [NSString stringWithFormat:@"Value is: %f", slider.value];
+}
 
-- (void)valueChange:(UISlider*)sender {
-    Picture *currentPicture = [self.pictures objectAtIndex:self.cellRow.row];
+- (void)sliderChange:(id)view didSlide:(UISlider *)slider {
+        Picture *currentPicture = [self.pictures objectAtIndex:self.cellRow.row];
     
-    if (sender.tag == 1) {
-        currentPicture.red = sender.value;
-        NSLog(@"%f", sender.value);
-    } else if (sender.tag == 2) {
-        currentPicture.green = sender.value;
-    } else if (sender.tag == 3) {
-        currentPicture.blue = sender.value;
-    }
+        if (slider.tag == 1) {
+            currentPicture.red = slider.value;
+        } else if (slider.tag == 2) {
+            currentPicture.green = slider.value;
+        } else if (slider.tag == 3) {
+            currentPicture.blue = slider.value;
+        }
     
-    [self.collectionView reloadData];
+        [self.collectionView reloadData];
 }
 
 @end
