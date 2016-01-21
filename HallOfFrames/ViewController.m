@@ -57,6 +57,7 @@
     
     // Setting the constraints
     hiddenView.center = [self.view convertPoint:self.view.center fromView:self.view.superview];
+    hiddenView.frame = self.view.frame;
     
     // Slider
     Picture *currentPicture = [self.pictures objectAtIndex:indexPath.row];
