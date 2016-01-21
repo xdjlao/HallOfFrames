@@ -24,11 +24,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    Picture *pic1 = [[Picture alloc] initWithImage:[UIImage imageNamed:@"bltImage"] frameColor:[UIColor blackColor]];
-    Picture *pic2 = [[Picture alloc] initWithImage:[UIImage imageNamed:@"saladImage"] frameColor:[UIColor blackColor]];
-    Picture *pic3 = [[Picture alloc] initWithImage:[UIImage imageNamed:@"pbjImage"] frameColor:[UIColor blackColor]];
-    Picture *pic4 = [[Picture alloc] initWithImage:[UIImage imageNamed:@"milkImage"] frameColor:[UIColor blackColor]];
-    Picture *pic5 = [[Picture alloc] initWithImage:[UIImage imageNamed:@"sodaImage"] frameColor:[UIColor blackColor]];
+    Picture *pic1 = [[Picture alloc] initWithImage:[UIImage imageNamed:@"bltImage"]];
+    Picture *pic2 = [[Picture alloc] initWithImage:[UIImage imageNamed:@"saladImage"]];
+    Picture *pic3 = [[Picture alloc] initWithImage:[UIImage imageNamed:@"pbjImage"]];
+    Picture *pic4 = [[Picture alloc] initWithImage:[UIImage imageNamed:@"milkImage"]];
+    Picture *pic5 = [[Picture alloc] initWithImage:[UIImage imageNamed:@"sodaImage"]];
     
     self.pictures = [NSMutableArray arrayWithObjects:pic1, pic2, pic3, pic4, pic5, nil];
 
@@ -42,8 +42,9 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     PictureCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ViewCell" forIndexPath:indexPath];
-    cell.imageView.image = (UIImage *)[[self.pictures objectAtIndex:indexPath.row] image];
-    cell.backgroundColor = (UIColor *)[[self.pictures objectAtIndex:indexPath.row] frameColor];
+    Picture *currentPicture = [self.pictures objectAtIndex:indexPath.row];
+    cell.imageView.image = (UIImage *)[currentPicture image];
+    cell.backgroundColor = [UIColor colorWithRed:currentPicture.red green:currentPicture.green blue:currentPicture.blue alpha:1.0];
     
     return cell;
 }
@@ -83,15 +84,20 @@
 - (void)customView:(id)view didTapButton:(UIButton *)button {
     [view removeFromSuperview];
     
+    Picture *currentPicture = [self.pictures objectAtIndex:self.cellRow.row];
+    
     if ([button.titleLabel.text isEqualToString:@"Red"]) {
-        Picture *currentPicture = [self.pictures objectAtIndex:self.cellRow.row];
-        currentPicture.frameColor = [UIColor redColor];
+        currentPicture.red = 255;
+        currentPicture.green = 0;
+        currentPicture.blue = 0;
     } else if ([button.titleLabel.text isEqualToString:@"Green"]) {
-        Picture *currentPicture = [self.pictures objectAtIndex:self.cellRow.row];
-        currentPicture.frameColor = [UIColor greenColor];
+        currentPicture.red = 0;
+        currentPicture.green = 255;
+        currentPicture.blue = 0;
     } else if ([button.titleLabel.text isEqualToString:@"Blue"]) {
-        Picture *currentPicture = [self.pictures objectAtIndex:self.cellRow.row];
-        currentPicture.frameColor = [UIColor blueColor];
+        currentPicture.red = 0;
+        currentPicture.green = 0;
+        currentPicture.blue = 255;
     } else {
         // Picture *currentPicture = [self.pictures objectAtIndex:self.cellRow.row];
         // currentPicture.frameColor = [UIColor yellowColor];
@@ -112,8 +118,6 @@
     } else if (sender.tag == 3) {
         currentPicture.blue = sender.value;
     }
-    
-    currentPicture.frameColor = [UIColor colorWithRed:currentPicture.red/255 green:currentPicture.green/255 blue:currentPicture.blue/255 alpha:1.0];
     
     [self.collectionView reloadData];
 }

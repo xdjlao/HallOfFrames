@@ -12,11 +12,10 @@
 @interface Picture : NSObject
 
 @property UIImage *image;
-@property UIColor *frameColor;
 @property float red;
 @property float green;
 @property float blue;
 
--(instancetype)initWithImage:(UIImage *)image frameColor:(UIColor *)color;
+-(instancetype)initWithImage:(UIImage *)image;
 
 @end
