@@ -44,7 +44,7 @@
     PictureCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ViewCell" forIndexPath:indexPath];
     Picture *currentPicture = [self.pictures objectAtIndex:indexPath.row];
     cell.imageView.image = (UIImage *)[currentPicture image];
-    cell.backgroundColor = [UIColor colorWithRed:currentPicture.red green:currentPicture.green blue:currentPicture.blue alpha:1.0];
+    cell.backgroundColor = [UIColor colorWithRed:currentPicture.red/255 green:currentPicture.green/255 blue:currentPicture.blue/255 alpha:1.0];
     
     return cell;
 }
@@ -63,6 +63,7 @@
     hiddenView.redSlider.minimumValue = 0;
     hiddenView.redSlider.maximumValue = 255;
     hiddenView.redSlider.value = currentPicture.red;
+    
     
     hiddenView.greenSlider.minimumValue = 0;
     hiddenView.greenSlider.maximumValue = 255;
@@ -113,6 +114,7 @@
     
     if (sender.tag == 1) {
         currentPicture.red = sender.value;
+        NSLog(@"%f", sender.value);
     } else if (sender.tag == 2) {
         currentPicture.green = sender.value;
     } else if (sender.tag == 3) {
