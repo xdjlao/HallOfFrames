@@ -13,7 +13,7 @@
 
 @interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegate, CustomViewDelegate>
 
-@property NSIndexPath *cellRow;
+@property Picture *currentPicture;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
@@ -50,8 +50,9 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    self.cellRow = indexPath;
+
+    Picture *currentPic = [self.pictures objectAtIndex:indexPath.row];
+    self.currentPicture = currentPic;
     CustomView *hiddenView = [[[NSBundle mainBundle] loadNibNamed:@"CustomView" owner:self options:nil] objectAtIndex:0];
     hiddenView.delegate = self;
     
@@ -82,20 +83,18 @@
 - (void)customView:(id)view didTapButton:(UIButton *)button {
     [view removeFromSuperview];
     
-    Picture *currentPicture = [self.pictures objectAtIndex:self.cellRow.row];
-    
     if ([button.titleLabel.text isEqualToString:@"Red"]) {
-        currentPicture.red = 255;
-        currentPicture.green = 0;
-        currentPicture.blue = 0;
+        self.currentPicture.red = 255;
+        self.currentPicture.green = 0;
+        self.currentPicture.blue = 0;
     } else if ([button.titleLabel.text isEqualToString:@"Green"]) {
-        currentPicture.red = 0;
-        currentPicture.green = 255;
-        currentPicture.blue = 0;
+        self.currentPicture.red = 0;
+        self.currentPicture.green = 255;
+        self.currentPicture.blue = 0;
     } else if ([button.titleLabel.text isEqualToString:@"Blue"]) {
-        currentPicture.red = 0;
-        currentPicture.green = 0;
-        currentPicture.blue = 255;
+        self.currentPicture.red = 0;
+        self.currentPicture.green = 0;
+        self.currentPicture.blue = 255;
     }
     
     [self.collectionView reloadData];
@@ -106,14 +105,13 @@
 }
 
 - (void)sliderChange:(id)view didSlide:(UISlider *)slider {
-        Picture *currentPicture = [self.pictures objectAtIndex:self.cellRow.row];
     
         if (slider.tag == 1) {
-            currentPicture.red = slider.value;
+            self.currentPicture.red = slider.value;
         } else if (slider.tag == 2) {
-            currentPicture.green = slider.value;
+            self.currentPicture.green = slider.value;
         } else if (slider.tag == 3) {
-            currentPicture.blue = slider.value;
+            self.currentPicture.blue = slider.value;
         }
     
         [self.collectionView reloadData];
